@@ -1,28 +1,56 @@
 /* Simple stylesheet for the landing page: styles.css */
 
-body {
-    font-family: 'Arial', sans-serif;
+*{
     margin: 0;
     padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    box-sizing: border-box; /* This ensures that padding and border are included in the total width and height of the elements*/
+}
+
+body {
+    font-family: 'Arial', sans-serif;
     background-color: #f7f7f7;
 }
 
-.container {
-    text-align: center;
+.grid-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /*Two cols of equal width*/
+    grid-template-rows: auto 1fr; /* Two rows, the first size to conent, the second taking up remaining space*/
+    gap: 20px; /* Space between grid items*/
+    max-width: 1200px;
+    margin: 40px auto; /* Center the grid in the viewporst and add some margin on top and bottom*/
+    padding: 20px ; /*Padding around the grid*/
+
 }
 
+.title {
+    grid-column: 1 / -1; /*This makes the title span both columns */
+    grid-row: 2 / 3; /* This places the image in the second row */
+}
+
+.text{
+    grid-column:2 / 3; /* This places the text in the second column */
+    grid-row: 2 / 3; /*THis places the text in the second row */
+}
+
+/*Styling for Image*/
+.left-image{
+    width:100%; /*Image will fill the container*/
+    max-width: 100%; /*Image won't exceed the container's width*/
+    height: auto; /*Image height will scale automatically*/
+}
+
+/*Styles for headings and paragraphs*/
 h1 {
     color: #333;
+    margin-bottom: 20px;/*Add some spae below the title*/
 }
 
 p {
     color: #666;
+    line-height: 1.6; /*Makes text more readable with better spacing */
 }
 
+/*Styles for the button */
 .btn {
     background-color: #008CBA;
     color: white;
@@ -33,27 +61,4 @@ p {
     font-size: 16px;
     margin: 4px 2px;
     cursor: pointer;
-}
-
-.left-image {
-    float: left;
-    width: 50%; /* or any other size */
-    margin-right: 20px; /* adjust the space between the image and text */
-}
-
-.text-content {
-    float: right;
-    width: 50%; /* adjust based on the size of the image */
-}
-
-/* Clearfix for the .content div to contain floated elements */
-.content::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
-/* Ensure the container accommodates the floated elements */
-.container {
-    overflow: hidden;
 }
