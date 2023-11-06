@@ -6,9 +6,11 @@
     box-sizing: border-box; /* This ensures that padding and border are included in the total width and height of the elements*/
 }
 
-body {
+body, html {
     font-family: 'Arial', sans-serif;
     background-color: #f7f7f7;
+    height: 100%;
+    padding: 20px;
 }
 
 .grid-container {
@@ -18,18 +20,27 @@ body {
     gap: 20px; /* Space between grid items*/
     max-width: 1200px;
     margin: 40px auto; /* Center the grid in the viewporst and add some margin on top and bottom*/
-    padding: 20px ; /*Padding around the grid*/
+    
 
 }
 
 .title {
     grid-column: 1 / -1; /*This makes the title span both columns */
-    grid-row: 2 / 3; /* This places the image in the second row */
+    text-align: center;
 }
 
 .text{
-    grid-column:2 / 3; /* This places the text in the second column */
-    grid-row: 2 / 3; /*THis places the text in the second row */
+    grid-column:2; /* This places the text in the second column */
+    grid-row: 2; /*THis places the text in the second row */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Push content to top and buttons to bottom */
+}
+
+.image{
+    grid-column:1;
+    grid-row:2;
 }
 
 /*Styling for Image*/
@@ -54,11 +65,32 @@ p {
 .btn {
     background-color: #008CBA;
     color: white;
-    padding: 15px 25px;
-    text-align: center;
+    padding: 10px 20px;
     text-decoration: none;
-    display: inline-block;
     font-size: 16px;
-    margin: 4px 2px;
+    margin-top: 10px;
+    border-radius: 5px;
+    border: none;
     cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+    /* Responsive design for smaller screens */
+    .grid-container {
+        grid-template-columns: 1fr; /* Stack columns on smaller screens */
+        grid-template-rows: auto 1fr 1fr; /* Title, Image, and Text each take a row */
+    }
+
+    .image, .text {
+        grid-column: 1; /* Reset to single column layout */
+    }
+
+    .text {
+        order: 3; /* Ensure text comes after the image */
+    }
+
+    .image {
+        order: 2; /* Ensure image comes after the title */
+    }
 }
