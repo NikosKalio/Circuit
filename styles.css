@@ -34,3 +34,26 @@ p {
     margin: 4px 2px;
     cursor: pointer;
 }
+
+.left-image {
+    float: left;
+    width: 50%; /* or any other size */
+    margin-right: 20px; /* adjust the space between the image and text */
+}
+
+.text-content {
+    float: right;
+    width: 50%; /* adjust based on the size of the image */
+}
+
+/* Clearfix for the .content div to contain floated elements */
+.content::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* Ensure the container accommodates the floated elements */
+.container {
+    overflow: hidden;
+}
